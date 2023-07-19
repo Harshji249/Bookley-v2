@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import LoginReducer from './login/LoginSlice'
+import HomeReducer from './home/HomeSlice'
 import LoginScreen from './login/LoginScreen'
 
 
 const store = configureStore({
   reducer: {
-    loginUserState: LoginReducer
+    loginUserState: LoginReducer,
+    productsState: HomeReducer,
   }
 })
 
