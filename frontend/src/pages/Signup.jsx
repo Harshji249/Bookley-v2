@@ -12,7 +12,7 @@ export default function Login() {
     }
 
   return (
-    <div className='flex overflow-hidden w-screen bg-white'>
+    <div className='flex overflow-hidden  w-full bg-white'>
       <div
       className='w-1/2 bg-blue-500 md:flex hidden'
       >

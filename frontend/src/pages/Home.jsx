@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 function Home() {
   return (
     <div
-    className='bg-white h-screen '
+    className='bg-white h-screen w-full overflow-x-hidden '
     >
       <Banner/>
       <TheWhy/>

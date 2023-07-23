@@ -3,7 +3,7 @@
 function WhyWait() {
   return (
     <div
-    className="w-screen bg-blue-500 py-[100px] px-[150px] flex flex-col items-center">
+    className="w-full overflow-x-hidden bg-blue-500 py-[100px] px-[150px] flex flex-col items-center">
         <h1 
         className="text-4xl font-semibold text-white mb-2"
         >Why wait?</h1>
