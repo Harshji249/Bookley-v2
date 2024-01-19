@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); */
 #root {
-  font-family: 'Poppins', sans-serif;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0rem;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  /* padding: 0rem; */
+  /* font-family: 'Times New Roman', Times, serif; */
   text-align: center;
 }
 

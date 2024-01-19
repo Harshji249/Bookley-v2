@@ -1,30 +1,34 @@
 const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
-    user :{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:'user'
+        ref: 'user'
     },
-    name :{
-        type:String,
+    file: {
+        type: String,
         required: true
     },
-    category:{
-        type:String,
-        required:true
+    name: {
+        type: String,
+        required: true
     },
-    ownership:{
-        type:String,
-        required:true
+    category: {
+        type: String,
+        required: true
     },
-    desc:{
-        type:String,
-        required:true
+    price: {
+        type: String,
+        required: true
     },
     date: {
         type: Date,
         default: Date.now
     },
+    // sold:{
+    //     type:Boolean,
+    //     default: false
+    // }
 })
 
 const product = mongoose.model("Product", productSchema)

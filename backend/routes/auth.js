@@ -5,6 +5,7 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
+const axios = require('axios')
 
 const JWT_SECRET = "secretjwtstring"
 
@@ -24,7 +25,6 @@ router.post('/createuser', [
         if (checkUser) {
             return res.status(400).json({ error: "User with this email already exists" })
         }
-        console.log(req.body)
         const salt = await bcrypt.genSalt(10);
         const { name, email, password } = req.body;
         const secPass = await bcrypt.hash(password, salt)
@@ -37,6 +37,29 @@ router.post('/createuser', [
         }
         const authToken = jwt.sign(data, JWT_SECRET);
         res.json({ authToken })
+
+        // const r = await axios.put(
+        //     'https://api.chatengine.io/users/',
+        //     {email: email,username : name , secret : password},
+        //     {headers : {"private-key" :"24adddb8-aed4-4a94-902d-9bb0d17e1045"}}
+        // )
+        // return res.status(r.status).json(r.data)
+        // const r = await axios.put(
+        //     'https://api.chatengine.io/users/',
+        //     { email: email, username: name, secret: password },
+        //     { headers: { "private-key": "24adddb8-aed4-4a94-902d-9bb0d17e1045" } }
+        // );
+
+        // const responseData = {
+        //     authToken: authToken,
+        //     chatEngineResponse: {
+        //         status: r.status,
+        //         data: r.data
+        //     }
+        // };
+
+        // res.json(responseData);
+        // 24adddb8-aed4-4a94-902d-9bb0d17e1045
     }
     catch (err) {
         console.error(err.message)
@@ -69,7 +92,8 @@ router.post('/login', [
             }
         }
         const authToken = jwt.sign(data, JWT_SECRET);
-        res.json({ authToken })
+        res.json({ authToken,user })
+
 
     }
     catch (err) {
@@ -79,13 +103,23 @@ router.post('/login', [
     }
 })
 
-
+router.get('/getalluser', async (req, res) => {
+    try {
+        const user = await User.find();
+        // res.json(products)
+        res.send({ status: 200, user })
+    }
+    catch (err) {
+        console.error(err.message)
+        res.status(500).send("Internal server error occured")
+    }
+})
 //Get loggedin User details using : POST "/api/auth/getuser" 
-router.post('/getuser',fetchuser ,async (req, res) => {
+router.post('/getuser', fetchuser, async (req, res) => {
 
     try {
         const id = req.user.id;
-        const user =await User.findById(id).select('-password')
+        const user = await User.findById(id).select('-password')
         res.send(user);
     } catch (err) {
         console.error(err.message)

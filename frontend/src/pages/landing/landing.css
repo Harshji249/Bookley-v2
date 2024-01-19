@@ -1,0 +1,13 @@
+.box{
+    /* cursor:"pointer" borderRadius:2, py:2, height:"300px", mx:2, my:2 */
+cursor: pointer;
+transition: 1s
+}
+.box:hover{
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+.font{
+    font-family: 'Times New Roman', Times, serif;
+}
