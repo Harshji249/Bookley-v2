@@ -10,6 +10,7 @@ import { setSocket } from './ChatSlice';
 import moment from 'moment';
 import {
   Paper,
+  Button,
   TextField,
   InputAdornment,
   IconButton,
@@ -24,7 +25,6 @@ import SendIcon from '@mui/icons-material/Send';
 import Navbar from '../navbar/Navbar';
 import axios from 'axios';
 import decodeToken from '../../Services';
-import { Button } from 'react-chat-engine-advanced';
 
 
 const socketServer = 'http://localhost:3005';
