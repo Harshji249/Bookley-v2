@@ -3,11 +3,11 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 const connectToMongo = require('./db')
 
-
+require('dotenv').config()
 
 connectToMongo();
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 4000;
 
 
 app.use(bodyParser.json());
