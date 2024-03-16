@@ -22,8 +22,7 @@ export default function Messages() {
                 const payload = {
                     sender: userId
                 }
-                console.log("Inside fetchData - payload:", payload);
-                const res = await axios.post('http://localhost:3000/api/chat/messages', payload, {
+                const res = await axios.post('https://bookley-v2.onrender.com/api/chat/messages', payload, {
                     headers: {
                         'auth-token': localStorage.getItem('authtoken')
                     }
@@ -36,37 +35,15 @@ export default function Messages() {
                     const uniqueIds = Array.from(new Set(allReceiverIds));
                     setUniqueReceiverIds(uniqueIds);
                 }
-                // setmsgData(res?.data?.conversations);
-                // const allReceiverIds = msgdata.map(item => item.receiver);
-                // const uniqueIds = Array.from(new Set(allReceiverIds));
-                // setUniqueReceiverIds(uniqueIds);
             } catch (error) {
                 console.log("ERROR", error);
             }
         };
             fetchData();
         return () => {
-            isMounted.current = false; // Set isMounted to false when the component is unmounted
+            isMounted.current = false;
         };
     }, [userId]);
-
-
-
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const res = await axios.get(`http://localhost:3000/api/chat/getUserById?userId=64b7fb6cf69f3c75489a7ff3`, {
-    //             headers: {
-    //                 'auth-token': localStorage.getItem('authtoken')
-    //             }
-    //         })
-    //         console.log("Name of reciever", res)
-    //         setRecieverName(res.data?.finalUser?.name)
-    //     };
-
-    //     fetchData(); // Call the async function immediately
-
-    // }, []);
 
     return (
         <>

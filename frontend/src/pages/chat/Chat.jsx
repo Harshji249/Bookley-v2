@@ -38,23 +38,11 @@ const ChatComponent = ({ toggleButton, receiver, receiverName, bookName }) => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const loginUserState = useSelector((state) => state.loginUserState);
-  // const [user, setSender] = useState(loginUserState?.userDetails[0]?.user?._id)
-  // console.log("SENDER", user)
-  // console.log("reciever", receiver)
   const dispatch = useDispatch();
   const socket = useSelector((state) => state.socket);
-  // const { socket } = useSelector((state) => state.socket);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [userId, setUserId] = useState(loginUserState?.userDetails[0]?.user?._id);
-
-
-  // useEffect(()=>{
-  //   fetchData();
-  // },[currentPage,pageSize])
-
-  console.log("rec pbj", receiver)
-  console.log("PAGINATEDdATA",displayData)
 
   useEffect(() => {
     console.log("RES NAME", receiverName)
@@ -79,7 +67,7 @@ const ChatComponent = ({ toggleButton, receiver, receiverName, bookName }) => {
       receiver: receiver
     }
     try {
-      const res = await axios.post('http://localhost:3000/api/chat/message', payload, {
+      const res = await axios.post('https://bookley-v2.onrender.com/api/chat/message', payload, {
         headers: {
           'auth-token': localStorage.getItem('authtoken')
         }
@@ -89,13 +77,6 @@ const ChatComponent = ({ toggleButton, receiver, receiverName, bookName }) => {
       })
 
       setMessages(res.data);
-
-      // setMessages([...messages, allMessages])
-
-      console.log("messages:", allMessages)
-      // console.log("RESULT OF POST API", res)
-      // setMessages([...messages, res.data])
-      // console.log("SOCKET", socket)
     }
     catch (error) {
       console.log("ERROS", error)
@@ -110,7 +91,7 @@ const ChatComponent = ({ toggleButton, receiver, receiverName, bookName }) => {
       socketId: socket?.socket?.id,
     }
     try {
-      await axios.post('http://localhost:3000/api/chat/createchat', payload, {
+      await axios.post('https://bookley-v2.onrender.com/api/chat/createchat', payload, {
         headers: {
           'auth-token': localStorage.getItem('authtoken')
         }
@@ -159,28 +140,9 @@ const ChatComponent = ({ toggleButton, receiver, receiverName, bookName }) => {
   useEffect(() => {
     scroll?.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
-  console.log("Messages Page",messages)
-//   const fetchData = async () => {
-//     try {
-//       const response = await axios.get('http://localhost:3000/api/chat/pagination', {
-//         params: {
-//           page: currentPage,
-//           pageSize: pageSize
-//         },
-//         data:{
-//           data: messages,
-//         }
-//       });
-//       setDisplayData(response.data.data);
-//     }
-//     catch(err){
-//       console.log(err);
-//     }
-// }
   const handleSearch = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/chat/search', {
+      const response = await axios.post('https://bookley-v2.onrender.com/api/chat/search', {
         search,
         messages
       }, {
@@ -190,7 +152,6 @@ const ChatComponent = ({ toggleButton, receiver, receiverName, bookName }) => {
       });
 
       setMessages(response.data);
-      console.log("Search Response", search)
     }
     catch (err) {
       console.log(err);

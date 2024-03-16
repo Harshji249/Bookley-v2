@@ -48,7 +48,7 @@ function Home() {
 
   const handleChatClick = async (product) => {
     // console.log("UPLOADED BY", product?.user)
-    const res = await axios.get(`http://localhost:3000/api/product/getUserById?userId=${product?.user}`, {
+    const res = await axios.get(`https://bookley-v2.onrender.com/api/product/getUserById?userId=${product?.user}`, {
       headers: {
         'auth-token': localStorage.getItem('authtoken')
       }

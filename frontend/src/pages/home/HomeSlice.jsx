@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import axios from 'axios';
 
-const baseURL = "http://localhost:3000/api/product/fetchallproducts";
+const baseURL = "https://bookley-v2.onrender.com/api/product/fetchallproducts";
 
 
 const initialState = {

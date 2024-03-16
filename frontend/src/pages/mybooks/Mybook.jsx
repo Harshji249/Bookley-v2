@@ -15,7 +15,7 @@ import Mydash from "../mydash/mydash";
 export default function Mybook() {
 
     const dispatch = useDispatch();
-    const host = "http://localhost:3000";
+    const host = "https://bookley-v2.onrender.com";
     const [snackopen, setSnackopen] = useState(false);
     const [search, setSearch] = useState("");
     const loginUserState = useSelector((state) => state.loginUserState);

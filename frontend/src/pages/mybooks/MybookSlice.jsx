@@ -1,72 +1,7 @@
-// import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-// import axios from 'axios';
-
-// const baseURL = "http://localhost:3000/api/product/myproducts";
-
-
-// const initialState = {
-//     products: [],
-//     fetchStatus: "",
-//     fetchError: ""
-
-// }
-
-// export const fetchMyProducts = createAsyncThunk("product/myproducts", async (_, { rejectWithValue }) => {
-//     try {
-//         const response = await axios.get(baseURL, {
-//             headers: {
-//                 'auth-token': localStorage.getItem('authtoken')
-//             }
-//         })
-//         return response.data;
-//     }
-//     catch (error) {
-//         console.log(error);
-//         return rejectWithValue(error.response.data)
-//     }
-// })
-// const MybookSlice = createSlice({
-//     name: "products",
-//     initialState,
-//     reducers: {},
-//     extraReducers: {
-//         [fetchMyProducts.pending]: (state, action) => {
-//             return {
-//                 ...state,
-//                 fetchStatus: "pending",
-//                 fetchError: ""
-
-//             }
-//         },
-//         [fetchMyProducts.fulfilled]: (state, action) => {
-//             return {
-//                 ...state,
-//                 products: [action.payload, ...state.products],
-//                 fetchStatus: "success",
-//                 fetchError: ""
-
-//             }
-//         },
-//         [fetchMyProducts.rejected]: (state, action) => {
-//             return {
-//                 ...state,
-//                 fetchStatus: "rejected",
-//                 fetchError: action.payload
-
-//             }
-//         },
-//     }
-// })
-
-// export default MybookSlice.reducer;
-
-
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseURL = "http://localhost:3000/api/product/myproducts";
+const baseURL = "https://bookley-v2.onrender.com/api/product/myproducts";
 
 const initialState = {
   products: [],
