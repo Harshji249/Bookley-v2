@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-const TerserPlugin = require('terser-webpack-plugin');
+import TerserPlugin from 'terser-webpack-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
