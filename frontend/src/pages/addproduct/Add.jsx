@@ -17,15 +17,6 @@ const Add = () => {
     const addproductState = useSelector((state) => state.addproductState)
     const vertical = "top"
     const horizontal = "right"
-    // const handleImageChange = (event) => {
-    //     const file = event.target.files[0];
-    //     console.log("selected file",file)
-    //     if (file) {
-    //         const imageUrl = URL.createObjectURL(file);
-    //         setImage(imageUrl);
-    //     }
-    // };
-
     const handleClose = () => {
         setSnackopen(false);
     }
@@ -52,12 +43,6 @@ const Add = () => {
         formData1.append('name', formData.name)
         formData1.append('category', formData.category)
         formData1.append('price', formData.price)
-        // formData1.append('name', formData.name)
-
-        // const product = {
-        //     ...formData,
-        //     image
-        // }
         dispatch(addproduct(formData1));
         setFormData({
             name: '',
